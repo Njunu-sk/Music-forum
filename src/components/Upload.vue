@@ -23,12 +23,14 @@
       <!-- Progess Bars -->
       <div class="mb-4" v-for="upload in uploads" :key="upload.name">
         <!-- File Name -->
-        <div class="font-bold text-sm">{{ upload.name }}</div>
+        <div class="font-bold text-sm" :class="upload.text_class">
+          <i :class="upload.icon"></i>{{ upload.name }}
+        </div>
         <div class="flex h-4 overflow-hidden bg-gray-200 rounded">
           <!-- Inner Progress Bar -->
           <div
             class="transition-all progress-bar bg-blue-400"
-            :class="'bg-blue-400'"
+            :class="upload.variant"
             :style="{ width: upload.current_progress + '%' }"
           ></div>
         </div>
@@ -38,7 +40,7 @@
 </template>
 
 <script>
-import { storage } from "@/includes/firebase";
+import { storage, songsCollection } from "@/includes/firebase";
 
 export default {
   name: "Upload",
@@ -63,12 +65,42 @@ export default {
         const songsRef = storageRef.child(`songs/${file.name}`);
         const task = songsRef.put(file);
 
-        const uploadIndex = this.uploads.push({ task, current_progress: 0, name: file.name }) - 1;
+        const uploadIndex = this.uploads.push({
+          task,
+          current_progress: 0,
+          name: file.name,
+          variant: "bg-blue-400",
+          icon: "fas fa-spineer fa-spin",
+        }) - 1;
 
-        task.on("state_changed", (snapshot) => {
-          const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-          this.uploads[uploadIndex].current_progress = progress;
-        });
+        task.on(
+          "state_changed",
+          (snapshot) => {
+            const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            this.uploads[uploadIndex].current_progress = progress;
+          },
+          (error) => {
+            this.uploads[uploadIndex].variant = "bg-red-400";
+            this.uploads[uploadIndex].icon = "fas fa-exclamation-triangle";
+            this.uploads[uploadIndex].text_class = "text-red-400";
+            console.log(error);
+          },
+          async () => {
+            const song = {
+              original_name: task.snapshot.ref.name,
+              modified_name: task.snapshot.ref.name,
+              genre: "",
+              comment_count: 0,
+            };
+
+            song.url = await task.snapshot.ref.getDownloadURL();
+            await songsCollection.add(song);
+
+            this.uploads[uploadIndex].variant = "bg-green-400";
+            this.uploads[uploadIndex].icon = "fas fa-check";
+            this.uploads[uploadIndex].text_class = "text-green-400";
+          }
+        );
       });
     },
   },
