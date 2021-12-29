@@ -6,13 +6,13 @@
       style="background-image: url(assets/img/header.jpeg)"
     ></div>
     <div class="container mx-auto">
-      <div class="text-white main-header-content">
-        <h1 class="font-bold text-5xl mb-5">Listen to Great Music!</h1>
-        <p class="w-full md:w-8/12 mx-auto">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus et
-          dolor mollis, congue augue non, venenatis elit. Nunc justo eros,
-          suscipit ac aliquet imperdiet, venenatis et sapien. Duis sed magna
-          pulvinar, fringilla lorem eget, ullamcorper urna.
+      <div class="text-blue-600 main-header-content">
+        <h1 class="font-bold text-5xl mb-5">
+          Upload and listen to your music...
+        </h1>
+        <p class="w-full md:w-8/12 mx-auto text-blue-900">
+          A simple music forum that lets you upload music to a cloud storage and
+          listen to it. You can also comment on the music you upload.
         </p>
       </div>
     </div>

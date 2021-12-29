@@ -4,7 +4,11 @@ import {
   defineRule,
   ErrorMessage,
 } from "vee-validate";
-import { required, min } from "@vee-validate/rules";
+import {
+  required,
+  min,
+  alpha_spaces as alphaSpaces,
+} from "@vee-validate/rules";
 
 export default {
   install(app) {
@@ -14,5 +18,6 @@ export default {
 
     defineRule("required", required);
     defineRule("min", min);
+    defineRule("alpha_spaces", alphaSpaces);
   },
 };
