@@ -6,21 +6,21 @@
       <router-link
         class="text-white font-bold uppercase text-2xl mr-4"
         :to="{ name: 'home' }"
-        >Whip</router-link
+        >All Songs</router-link
       >
 
       <div class="flex flex-grow items-center">
         <!-- Primary Navigation -->
         <ul class="flex flex-row mt-1">
           <!-- Navigation Links -->
-          <li>
+          <!-- <li>
             <a class="px-2 text-white" href="#" @click.prevent="toggleAuthModal"
               >Login / Register</a
             >
-          </li>
+          </li> -->
           <li>
             <router-link class="px-2 text-white" :to="{ name: 'manage' }"
-              >Manage</router-link
+              >Upload Music</router-link
             >
           </li>
         </ul>

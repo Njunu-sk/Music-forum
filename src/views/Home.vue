@@ -3,7 +3,7 @@
   <section class="mb-8 py-20 text-white text-center relative">
     <div
       class="absolute inset-0 w-full h-full bg-contain introduction-bg"
-      style="background-image: url(assets/img/header.jpeg)"
+      style="background-image: url(assets/img/music.jpeg)"
     ></div>
     <div class="container mx-auto">
       <div class="text-blue-600 main-header-content">

@@ -5,11 +5,12 @@ import "firebase/storage";
 import "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "api_key",
-  authDomain: "domain",
-  projectId: "project_id",
-  storageBucket: "bucket",
-  appId: "app_id",
+  apiKey: "AIzaSyAq_D9O9HfhKMdS1Q9LLgIdSVw6Y9krRtA",
+  authDomain: "music-forum-bb03d.firebaseapp.com",
+  projectId: "music-forum-bb03d",
+  storageBucket: "music-forum-bb03d.appspot.com",
+  appId: "1:25730402461:web:3e25ceb18bd8a72d04ec74",
+  measurementId: "G-THZT7J8XC1"
 };
 
 // Initialize Firebase
